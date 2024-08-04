@@ -51,11 +51,12 @@ export class DictionariesService {
       return null;
     }
 
-    const updatedDictionary = await this.dictionaryRepository.save(
+    const updatedDictionary = await this.dictionaryRepository.update(
+      { id },
       updateDictionaryInput,
     );
 
-    return updatedDictionary;
+    return this.findOne(updatedDictionary?.raw[0]?.id);
   }
 
   async remove(id: number): Promise<number> {

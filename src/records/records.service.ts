@@ -56,9 +56,13 @@ export class RecordsService {
       updateRecordInput.dictionary = { id: updateRecordInput.dictionaryId };
       delete updateRecordInput.dictionaryId;
     }
-    const updatedRecord = await this.recordRepository.save(updateRecordInput);
 
-    return updatedRecord;
+    const updatedRecord = await this.recordRepository.update(
+      { id },
+      updateRecordInput,
+    );
+
+    return this.findOne(updatedRecord?.raw[0]?.id);
   }
 
   async remove(id: number): Promise<number> {
