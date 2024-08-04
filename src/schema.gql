@@ -1,0 +1,136 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Record {
+  """ID"""
+  id: Int!
+
+  """Name"""
+  name: String!
+
+  """Value"""
+  value: String!
+
+  """Color"""
+  color: String!
+
+  """Dictionary"""
+  dictionary: Dictionary!
+
+  """Created at"""
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Dictionary {
+  """ID"""
+  id: Int!
+
+  """Name"""
+  name: String!
+
+  """Records"""
+  records: [Record!]!
+
+  """Created at"""
+  createdAt: DateTime!
+}
+
+input RecordInput {
+  """ID"""
+  id: Int!
+
+  """Name"""
+  name: String!
+
+  """Value"""
+  value: String!
+
+  """Color"""
+  color: String!
+
+  """Dictionary"""
+  dictionary: DictionaryInput!
+
+  """Created at"""
+  createdAt: DateTime!
+}
+
+input DictionaryInput {
+  """ID"""
+  id: Int!
+
+  """Name"""
+  name: String!
+
+  """Records"""
+  records: [RecordInput!]!
+
+  """Created at"""
+  createdAt: DateTime!
+}
+
+type Query {
+  dictionaries: [Dictionary!]!
+  dictionary(id: Int!): Dictionary!
+  records: [Record!]!
+  record(id: Int!): Record!
+}
+
+type Mutation {
+  createDictionary(createDictionaryInput: CreateDictionaryInput!): Dictionary!
+  updateDictionary(updateDictionaryInput: UpdateDictionaryInput!): Dictionary!
+  removeDictionary(id: Int!): Int!
+  createRecord(createRecordInput: CreateRecordInput!): Record!
+  updateRecord(updateRecordInput: UpdateRecordInput!): Record!
+  removeRecord(id: Int!): Int!
+}
+
+input CreateDictionaryInput {
+  """Name"""
+  name: String!
+}
+
+input UpdateDictionaryInput {
+  """Name"""
+  name: String
+
+  """Name"""
+  id: ID!
+}
+
+input CreateRecordInput {
+  """Name"""
+  name: String!
+
+  """Value"""
+  value: String!
+
+  """Color"""
+  color: String!
+
+  """Dictionary ID"""
+  dictionaryId: Int!
+}
+
+input UpdateRecordInput {
+  """Name"""
+  name: String
+
+  """Value"""
+  value: String
+
+  """Color"""
+  color: String
+
+  """Dictionary ID"""
+  dictionaryId: Int
+
+  """ID"""
+  id: Int!
+}
