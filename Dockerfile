@@ -17,7 +17,5 @@ RUN npm run build
 
 EXPOSE ${PORT}
 
-# Ожидание пока инициализируется база данных в другом сервисе
-CMD sleep 5
-
-CMD npm run migrations:run && npm run start:prod
+# Ожидание пока инициализируется база данных в другом сервисе, после миграция, после запуск бэка
+CMD sleep 10 && npm run migrations:run && npm run start:prod
